@@ -15,14 +15,19 @@ PLAYER_KEYS = {
 
 
 class Player:
-    def __init__(self, hp=5):
+    def __init__(self, pos, hp=5):
         self.moving = False
         self.hp = hp
+        self.pos = pos
+
+    def draw(self):
+        pass
 
 class Main:
     def __init__(self, xsize, ysize):
         pygame.init()
         self.screen = pygame.display.set_mode((xsize, ysize))
+        self.player_spawn(xsize / 2, ysize / 2)
         # More stuff
         self.main_loop()
     def main_loop(self):
@@ -32,7 +37,6 @@ class Main:
             elif event.type == KEYDOWN:
 
     def player_spawn(self, x, y):
-        self.player = Player()
-        self.player.pos = (x, y)
+        self.player = Player( (x, y) )
 
 
